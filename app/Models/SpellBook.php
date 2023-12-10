@@ -9,5 +9,7 @@ class SpellBook extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'file_path'];
+    protected $table = 'pdfs';
+
+    protected $fillable = ['file_name', 'file_path', 'content'];
 }

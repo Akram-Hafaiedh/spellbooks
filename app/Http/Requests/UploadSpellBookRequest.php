@@ -21,10 +21,13 @@ class UploadSpellBookRequest extends FormRequest
      */
     public function rules(): array
     {
+        // return [
+        //     'spellbook' => 'required|mimes:pdf|max:2048',
+        //     'title' => 'required|string|max:255',
+        //     'description' => 'nullable|string|max:1000',
+        // ];
         return [
-            'spellbook' => 'required|mimes:pdf|max:2048',
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
+            'file' => 'required|mimes:pdf|max:10240', // Adjust max file size as needed
         ];
     }
 }

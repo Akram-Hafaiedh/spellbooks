@@ -15,14 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::redirect('/', '/spellbooks');
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
 Route::controller(SpellBookController::class)->group(function () {
-    Route::get('/', 'index')->name('spellbooks.index');
-    Route::post('/{spellbook}/update', 'update')->name('spellbooks.update');
-    Route::get('/upload', 'upload')->name('spellbooks.upload');
-    Route::get('/show/{spellBook}', 'show');
-    Route::delete('/{spellbook}', 'destroy')->name('spellbooks.destroy');
+    Route::get('spellbooks/', 'index')->name('spellbooks.index');
+    Route::get('spellbooks/{spellBook}/show', 'show')->name('spellbooks.show');
+    Route::post('spellbooks/{spellbook}/update', 'update')->name('spellbooks.update');
+    Route::get('spellbooks/{id}/edit', 'edit')->name('spellbooks.edit');
+    Route::post('spellbooks/upload', 'upload')->name('spellbooks.upload');
+    Route::delete('spellbooks/{id}', 'destroy')->name('spellbooks.destroy');
 });

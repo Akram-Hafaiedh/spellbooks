@@ -17,9 +17,9 @@ class SpellBookFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
-            'description' => fake()->paragraph(),
-            'file_path' => 'path/to/pdf/file.pdf'
+            'file_name' => fake()->file('storage/app/public','spellbooks','true'),
+            'file_path' => fake()->url(),
+            'content' => fake()->paragraph(),
         ];
     }
 }

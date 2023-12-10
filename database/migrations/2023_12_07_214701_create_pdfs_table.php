@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spell_books', function (Blueprint $table) {
+        Schema::create('pdfs', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('file_path');
+            $table->string('file_name')->nullable(false);
+            $table->string('file_path')->nullable(false);
+            $table->text('content')->nullable(false);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('spell_books');
+        Schema::dropIfExists('pdfs');
     }
 };
