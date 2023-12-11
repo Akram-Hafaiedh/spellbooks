@@ -36,12 +36,14 @@ class SpellBookController extends Controller
             $spellBookFile = $request->file('file');
             $spellbookName = time() . '-' . $spellBookFile->getClientOriginalName();
             $spellbookPath = $spellBookFile->storeAs('public' . DIRECTORY_SEPARATOR . 'spellbooks', $spellbookName);
-            $parser = new \Smalot\PdfParser\Parser();
-
+            $config = new \Smalot\PdfParser\Config();
+            $config->setHorizontalOffset("10px");
+            $config->setFontSpaceLimit(-30);
+            $parser = new \Smalot\PdfParser\Parser([], $config);
 
 
             $pdf = $parser->parseFile(storage_path('app' . DIRECTORY_SEPARATOR . $spellbookPath));
-            // echo $fileContents;
+
 
             $spellBookContent = $pdf->getText();
             // dd($spellBookContent,  $spellbookPath,  $spellbookName);

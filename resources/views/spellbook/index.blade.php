@@ -39,8 +39,9 @@
             <tbody>
                 @foreach($spellbooks as $spellbook)
                 <tr id={{ $spellbook->id }} class="spellbook-row hover:bg-gray-200 hover:cursor-pointer"
-                    {{-- @click="selectedSpellBook = '{{ $spellbook->file_name}}';console.log(selectedSpellBook)"
-                    --}}
+                    :class="{ 'bg-indigo-300': selectedSpellBook === '{{ $spellbook->file_name }}' }"
+                    @click.stop="selectedSpellBook = '{{ $spellbook->file_name}}';console.log(selectedSpellBook)"
+
                     >
                     @php
                     $parts = explode('-', $spellbook->file_name);
@@ -68,16 +69,14 @@
                     </td>
 
                     <td class="flex items-center px-4 py-2 space-x-2 text-sm text-blue-500 border-b ">
-                        <span @click="showModal = true; spellbookToDelete = {{ $spellbook->id }};"
+                        <span @click.stop="showModal = true; spellbookToDelete = {{ $spellbook->id }};"
                             class="cursor-pointer material-symbols-outlined hover:underline">
                             delete
                         </span>
-                        <a href="{{ route('spellbooks.edit', ['spellbook' => $spellbook]) }}"
+                        <a href="{{ route('spellbooks.edit', ['id' => $spellbook->id]) }}"
                             class="cursor-pointer material-symbols-outlined hover:underline">
                             edit
                         </a>
-                        {{-- <a href="{{ $spellbook->file_path }}" target="_blank">{{ $spellbook->file_path }}</a>
-                        --}}
                     </td>
                     <!-- Add more table cells as needed -->
                 </tr>

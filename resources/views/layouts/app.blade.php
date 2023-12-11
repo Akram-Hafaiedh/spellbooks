@@ -18,7 +18,12 @@
 </head>
 
 <body>
-    <h1 class="text-3xl font-bold text-center underline">Welcome to Spell Book App!</h1>
+    <div class="flex-col items-center justify-center max-w-md mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-2">Welcome to Spell Book
+            App!</h2>
+        <a href={{ route('spellbooks.index') }} class="font-bold text-center underline ">Spellbooks</a>
+    </div>
+
     {{-- @section('sidebar')
     This is the master sidebar.
     @show --}}
